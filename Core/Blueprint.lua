@@ -410,7 +410,7 @@ local function CheckValueSlots(value, path)
     return slots
 end
 
-local profileFields = Set("scale", "width", "healthHeight", "powerHeight", "powerWidth", "castWidth", "castHeight",
+local profileFields = Set("scale", "petScale", "width", "healthHeight", "powerHeight", "powerWidth", "castWidth", "castHeight",
     "castIcon", "castTime", "castName", "castInterruptColours", "castOnTop", "castColours", "layoutVersion",
     "questProgress", "questProgressFormat",
     "nameFontSize", "healthTexture",
@@ -1206,6 +1206,7 @@ local function ExportProfile(profile, includeNames)
         valueSlots = {},
         auraLayouts = {},
     }
+    if profile.petScale ~= profileDefaults.enemy.petScale then result.petScale = profile.petScale end
     if profile.castColours then
         result.castColours = {}
         for _, key in ipairs(S.CAST_COLOUR_KEYS) do
